@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import ScrollArea from 'react-scrollbar';
 export class SideBar extends Component{
 
   state={
@@ -8,7 +8,11 @@ export class SideBar extends Component{
    
   }
 
+ 
+
     componentDidMount(){
+
+      var storageLength = localStorage.length;
     
       for (var i = 0; i < localStorage.length; i++){
        var item =localStorage.getItem(localStorage.key(i));
@@ -16,18 +20,25 @@ export class SideBar extends Component{
         this.state.localArray.push(item);
       }
 
+      this.setState({
+        storageLength
+     })
+
         console.log("List ",this.state.localArray);
+        console.log("o length",storageLength)
+        console.log("length of storage",this.state.storageLength);
       }
 
       componentDidUpdate()
       {
         var storageLength = localStorage.length;
-
-        console.log(localStorage.length);
+        console.log("component did update",storageLength);
+        console.log("did update state length",this.state.storageLength);
         
         
-        if(localStorage.length!==this.state.storageLength)
+        if(storageLength!==this.state.storageLength)
         {
+          console.log("in if condition");
 
           var updatedArray=[];
         
@@ -42,32 +53,37 @@ export class SideBar extends Component{
               storageLength
            })
          
-           
+           console.log("in did update ",this.state.localArray);
         }
         
         
-        console.log("in did update ",this.state.localArray);
+        
+      }
+
+
+      historyList=()=>{
+        return this.state.localArray.map( (data)=>(
+              console.log("data in map function",data)
+          )
+            
+          
+        )
       }
 
     render(){
 
-        return(
+      return this.state.localArray.map((data,index)=>(
 
-           <Nav style={{textAlign:'right'}} vertical>
-        <NavItem>
-          <NavLink href="#">{this.state.localArray}</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">Link</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#">Another Link</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink disabled href="#">Disabled Link</NavLink>
-        </NavItem>
-      </Nav>
-        )
+        <div key={index}>
+        <ScrollArea>
+          <div>
+           <p>{JSON.parse(data.months)}</p>   
+          </div>
+        </ScrollArea>
+        </div>
+
+      ));
+    
     }
 }
 
