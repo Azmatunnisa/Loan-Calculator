@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import InputRange from "react-input-range";
 import Display from "./Display";
-
+import SideBar from './SideBar';
 import "../styles/Calculator.css";
 import "react-input-range/lib/css/index.css";
 
@@ -14,7 +14,9 @@ class Calculator extends Component {
       monthsValue: 6
     };
   }
- 
+  componentDidMount(){
+    console.log("Props ",this.props.dat);
+  }
 
   handleAmountChange = value => {
     this.setState({ amountValue: value });
@@ -31,6 +33,9 @@ class Calculator extends Component {
 
     return (
       <div>
+     <div>
+<SideBar/>
+     </div>
       <div className="App">
         <h4>Amount ${amountValue}</h4>
 
@@ -53,12 +58,12 @@ class Calculator extends Component {
           value={monthsValue}
           onChange={this.handleYearChange}
         />
-       
+        <Display months={monthsValue} amount={amountValue}  />
       </div>
-      <div>
-       <Display months={monthsValue} amount={amountValue}  />
-       </div>
-       </div>
+     
+      </div>
+       
+      
     );
   }
 }

@@ -87,7 +87,7 @@ localStorage.setItem( this.state.count,JSON.stringify(local));
      
       let a= this.props;
       this.state.dataArray.push(a);
-console.log("Data array ",this.state.dataArray);
+//console.log("Data array ",this.state.dataArray);
 
     }
   }
@@ -122,22 +122,26 @@ return <p>{this.state.monthlyPayment}</p>;
 
 }; 
 
+nothing = () => {
+  return <p></p>;
+  
+  }; 
+  
+
   render() {
      
     return (
     
- <div>
-   <div>
-<SideBar foo={this.state.dataArray}></SideBar>
-</div> 
-      <div className="App">
+ 
+   
+      <div className="flex">
         <DisplayChild text="interest rate" func={this.rateOfInterest()} />
          <DisplayChild text="monthly payment" func={this.monthly()}/>  
-
+<DisplayChild func={this.nothing()} text="" dat={this.state.dataArray}/>
       
       </div>
       
-</div>    
+    
     );
   }
 }
