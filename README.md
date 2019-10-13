@@ -2,26 +2,17 @@
 
 > Simple react loan calculator
 
-![](https://img.shields.io/github/last-commit/GavBaros/react-tinder-cards.svg?style=flat)
-![](https://img.shields.io/github/repo-size/GavBaros/react-tinder-cards.svg?style=flat)
-![](https://img.shields.io/david/GavBaros/react-tinder-cards.svg?style=flat)
 
 Drag sliders and get an accurate loan amount.
 
-## Preview
 
-![](calculator.gif)
-
-## Demo
-
-https://codepen.io/GavBarosee/pen/PVwMvG
 
 ## Installation
 
 ### Setup
 
 ```sh
-git clone https://github.com/GavBaros/react-loan-calculator.git
+git clone https://github.com/Azmatunnisa/Loan-Calculator.git
 cd react-loan-calculator
 npm install
 npm start
